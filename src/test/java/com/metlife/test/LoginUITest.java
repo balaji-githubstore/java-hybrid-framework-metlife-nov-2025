@@ -1,5 +1,6 @@
 package com.metlife.test;
 
+import com.metlife.base.AutomationWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,21 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginUITest {
-    WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
-    }
-
-    @AfterMethod
-    public void teardown() {
-        driver.quit();
-    }
+public class LoginUITest extends AutomationWrapper {
 
     @Test
     public void titleTest() {
@@ -37,4 +24,5 @@ public class LoginUITest {
         String actualHeader = driver.findElement(By.xpath("//h5[contains(normalize-space(),'Log')]")).getText();
         Assert.assertEquals(actualHeader, "Login");
     }
+
 }
