@@ -1,8 +1,10 @@
 package com.metlife.test;
 
 import com.metlife.base.AutomationWrapper;
+import com.metlife.utilities.DataSource;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class LoginTest extends AutomationWrapper {
@@ -17,13 +19,14 @@ public class LoginTest extends AutomationWrapper {
         Assert.assertEquals(actualValue, "Quick Launch");
     }
 
-    @Test
-    public void invalidLoginTest() {
-        driver.findElement(By.name("username")).sendKeys("john");
-        driver.findElement(By.name("password")).sendKeys("john123");
+
+    @Test(dataProviderClass = DataSource.class,dataProvider = "invalidLoginData")
+    public void invalidLoginTest(String username, String password, String expectedError) {
+        driver.findElement(By.name("username")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
 
         String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
-        Assert.assertEquals(actualError, "Invalid credentials");
+        Assert.assertEquals(actualError, expectedError);
     }
 }
