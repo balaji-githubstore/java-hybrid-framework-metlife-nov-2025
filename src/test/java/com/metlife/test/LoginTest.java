@@ -4,6 +4,7 @@ import com.metlife.base.AutomationWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,12 +14,12 @@ import java.time.Duration;
 public class LoginTest extends AutomationWrapper {
 
     @Test
-    public void validLoginTest()
-    {
+    public void validLoginTest() {
         driver.findElement(By.name("username")).sendKeys("Admin");
-        //enter password as admin123
-        //click on login
+        driver.findElement(By.name("password")).sendKeys("admin123");
+        driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
 
-        //Assert the Quick Launch text
+        String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'Quick')]")).getText();
+        Assert.assertEquals(actualValue, "Quick Launch");
     }
 }

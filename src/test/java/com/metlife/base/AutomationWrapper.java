@@ -10,11 +10,12 @@ import java.time.Duration;
 public class AutomationWrapper {
   protected WebDriver driver;
 
+
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
     }
 
