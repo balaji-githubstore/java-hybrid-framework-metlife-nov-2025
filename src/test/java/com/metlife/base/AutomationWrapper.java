@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 
 /**
- * This class contains code for browser and report configuration
+ * This class contains code for browser and report configuration.
  */
 public class AutomationWrapper {
   protected WebDriver driver;
