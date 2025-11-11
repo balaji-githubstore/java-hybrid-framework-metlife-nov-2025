@@ -3,7 +3,7 @@ package com.metlife.utilities;
 import org.testng.annotations.DataProvider;
 
 /**
- * This class contains all dataprovider details
+ * This class contains all test data of dataprovider
  */
 public class DataSource {
 
