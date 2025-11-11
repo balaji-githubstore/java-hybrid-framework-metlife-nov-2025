@@ -22,4 +22,14 @@ public class LoginTest extends AutomationWrapper {
         String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'Quick')]")).getText();
         Assert.assertEquals(actualValue, "Quick Launch");
     }
+
+    @Test
+    public void invalidLoginTest() {
+        driver.findElement(By.name("username")).sendKeys("john");
+        driver.findElement(By.name("password")).sendKeys("john123");
+        driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
+
+        String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
+        Assert.assertEquals(actualError, "Invalid credentials");
+    }
 }
