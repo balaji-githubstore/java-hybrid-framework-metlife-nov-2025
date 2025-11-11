@@ -18,5 +18,4 @@ public class LoginUITest extends AutomationWrapper {
         String actualHeader = driver.findElement(By.xpath("//h5[contains(normalize-space(),'Log')]")).getText();
         Assert.assertEquals(actualHeader, "Login");
     }
-
 }
