@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Suite">
+
+    <groups>
+        <run>
+            <include name="smoke"></include>
+        </run>
+
+    </groups>
+
+    <test verbose="2" preserve-order="true" name="All Test">
+        <classes>
+            <class name="com.metlife.test.LoginUITest"></class>
+            <class name="com.metlife.test.LoginTest"></class>
+            <class name="com.metlife.test.EmployeeTest"></class>
+        </classes>
+    </test>
+
+</suite>

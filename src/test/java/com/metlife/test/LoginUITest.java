@@ -7,13 +7,13 @@ import org.testng.annotations.Test;
 
 public class LoginUITest extends AutomationWrapper {
 
-    @Test
+    @Test(groups = {"regression","smoke"})
     public void titleTest() {
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, "OrangeHRM");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void headerTest() {
         String actualHeader = driver.findElement(By.xpath("//h5[contains(normalize-space(),'Log')]")).getText();
         Assert.assertEquals(actualHeader, "Login");

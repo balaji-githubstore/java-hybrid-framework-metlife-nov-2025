@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends AutomationWrapper {
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider")
+    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider",groups = {"regression","smoke"})
     public void validLoginTest(String username,String password,String expectedValue) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
@@ -20,7 +20,7 @@ public class LoginTest extends AutomationWrapper {
     }
 
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider")
+    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider",groups = {"regression"})
     public void invalidLoginTest(String username, String password, String expectedError) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);

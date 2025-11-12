@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class EmployeeTest extends AutomationWrapper {
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider")
+    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider",groups = {"regression"})
     public void addValidLoginTest(String username,String password,String firstName,String middleName,String lastName)
     {
         driver.findElement(By.name("username")).sendKeys("Admin");
