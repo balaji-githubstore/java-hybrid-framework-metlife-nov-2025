@@ -1,4 +1,4 @@
-package com.metlife.test;
+package com.metlife.zdemo;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
