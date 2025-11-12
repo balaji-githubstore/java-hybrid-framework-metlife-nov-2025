@@ -9,6 +9,13 @@ import java.io.IOException;
 
 public class ExcelUtils {
 
+    /**
+     * Converts sheet into two-dimensional Object[][]
+     * @param filePath
+     * @param sheetname
+     * @return Object[][]
+     * @throws IOException
+     */
     public static Object[][] getSheetIntoTwoDimensionalArray(String filePath, String sheetname) throws IOException {
         FileInputStream file = new FileInputStream(filePath);
         XSSFWorkbook book = new XSSFWorkbook(file);

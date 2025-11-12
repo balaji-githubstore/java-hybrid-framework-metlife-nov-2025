@@ -9,18 +9,18 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends AutomationWrapper {
 
-    @Test
-    public void validLoginTest() {
-        driver.findElement(By.name("username")).sendKeys("Admin");
-        driver.findElement(By.name("password")).sendKeys("admin123");
+    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider")
+    public void validLoginTest(String username,String password,String expectedValue) {
+        driver.findElement(By.name("username")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
 
         String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'Quick')]")).getText();
-        Assert.assertEquals(actualValue, "Quick Launch");
+        Assert.assertEquals(actualValue, expectedValue);
     }
 
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "invalidLoginData")
+    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider")
     public void invalidLoginTest(String username, String password, String expectedError) {
         driver.findElement(By.name("username")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
