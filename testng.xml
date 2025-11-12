@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Suite" parallel="tests">
+
+    <parameter name="browser" value="edge"></parameter>
+
+    <test verbose="2" preserve-order="true" name="Login UI Test1">
+        <classes>
+            <class name="com.metlife.test.LoginUITest">
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="Login UI Test2">
+        <parameter name="browser" value="ch"></parameter>
+        <classes>
+            <class name="com.metlife.test.LoginUITest">
+            </class>
+        </classes>
+    </test>
+</suite>
