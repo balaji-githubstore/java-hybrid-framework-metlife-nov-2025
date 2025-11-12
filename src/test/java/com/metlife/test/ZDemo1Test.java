@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
  * No need to create - not part of the framework
  *
  */
-public class ZDemoTest {
+public class ZDemo1Test {
 
     @DataProvider
     public Object[][] validData()

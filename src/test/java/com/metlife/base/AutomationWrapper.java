@@ -13,7 +13,6 @@ import java.time.Duration;
 public class AutomationWrapper {
   protected WebDriver driver;
 
-
     @BeforeMethod
     public void setup() {
         driver = new ChromeDriver();
