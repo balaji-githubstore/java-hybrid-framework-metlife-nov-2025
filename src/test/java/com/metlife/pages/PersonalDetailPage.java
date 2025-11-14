@@ -2,13 +2,10 @@ package com.metlife.pages;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * All common menu and other common element
- */
-public class MainPage {
+public class PersonalDetailPage {
     private final WebDriver driver;
 
-    public MainPage(WebDriver driver)
+    public PersonalDetailPage(WebDriver driver)
     {
         this.driver=driver;
     }

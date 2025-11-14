@@ -1,6 +1,7 @@
 package com.metlife.test;
 
 import com.metlife.base.AutomationWrapper;
+import com.metlife.pages.DashboardPage;
 import com.metlife.pages.LoginPage;
 import com.metlife.utilities.DataSource;
 import org.openqa.selenium.By;
@@ -14,29 +15,28 @@ import java.time.Duration;
 
 public class LoginTest extends AutomationWrapper {
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider",groups = {"regression","smoke"})
-    public void validLoginTest(String username,String password,String expectedValue) {
+    @Test(dataProviderClass = DataSource.class, dataProvider = "commonDataProvider", groups = {"regression", "smoke"})
+    public void validLoginTest(String username, String password, String expectedValue) {
 
-        LoginPage login=new LoginPage();
-        login.enterUsername(driver,username);
-        login.enterPassword(driver,password);
+        LoginPage login = new LoginPage(driver);
+        login.enterUsername(username);
+        login.enterPassword(password);
+        login.clickOnLogin();
 
-        driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
-
-        String actualValue = driver.findElement(By.xpath("//p[contains(normalize-space(),'Quick')]")).getText();
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        String actualValue = dashboardPage.getQuickLaunchText();
         Assert.assertEquals(actualValue, expectedValue);
     }
 
-    @Test(dataProviderClass = DataSource.class,dataProvider = "commonDataProvider",groups = {"regression"})
+    @Test(dataProviderClass = DataSource.class, dataProvider = "commonDataProvider", groups = {"regression"})
     public void invalidLoginTest(String username, String password, String expectedError) {
 
-        LoginPage login=new LoginPage();
-        login.enterUsername(driver,username);
-        login.enterPassword(driver,password);
+        LoginPage login = new LoginPage(driver);
+        login.enterUsername(username);
+        login.enterPassword(password);
+        login.clickOnLogin();
 
-        driver.findElement(By.xpath("//button[contains(normalize-space(),'Logi')]")).click();
-
-        String actualError = driver.findElement(By.xpath("//p[contains(normalize-space(),'Invalid')]")).getText();
+        String actualError = login.getInvalidErrorMessage();
         Assert.assertEquals(actualError, expectedError);
     }
 }
